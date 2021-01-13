@@ -11,11 +11,18 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ movieData }) => {
-  const { poster_path } = movieData;
-  console.log('props :>> ', movieData);
+  const { poster_path, vote_average, title } = movieData;
+  
+  
 
   return <Styled.Card>
           <Styled.Image src={`https://image.tmdb.org/t/p/w300${poster_path}`} />
+          <Styled.Details>
+            <Styled.Title>{title}</Styled.Title>
+            <Styled.Votes>
+              {vote_average}
+            </Styled.Votes>
+          </Styled.Details>
         </Styled.Card>
 }
 
