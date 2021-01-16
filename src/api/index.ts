@@ -15,5 +15,8 @@ const config = {
 export const getPopularMovies = () => api.get('/movie/popular', config);
 export const getTopRatedMovies = () => api.get('/movie/top_rated', config);
 export const getUpComingMovies = () => api.get('/movie/upcoming', config);
+export const getMovieDetails = (id: string) => api.get(`/movie/${id}`, config);
+export const getMovieWatchProviders = (id: string) => api.get(`/movie/${id}/watch/providers`, config);
+
 
 

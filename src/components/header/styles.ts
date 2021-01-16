@@ -8,7 +8,7 @@ export const Header = styled.div`
   font-weight: 800;
   font-size: 24px;
   letter-spacing: 2px;
-  margin-bottom: 50px;
+  
 `;
 
 export const Container = styled.div`
@@ -21,11 +21,24 @@ export const Container = styled.div`
 
   align-items: center;
 
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: unset;
+    color: ${props => props.theme.colors.primary};
+    
+    &:hover {
+      opacity: 0.8;
+      transition: .4s;
+    }
+  }
+
   h1 {
     font-weight: normal;
     font-size: 28px;
     height: 32px;
     display: flex;
+    margin-right: 10px;
   }
 
   svg {

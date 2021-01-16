@@ -41,6 +41,8 @@ export const Card = styled.article`
   &:hover {
     cursor: pointer;
     transform: translateY(-5%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    
   }
 
   &:hover ${Details} {

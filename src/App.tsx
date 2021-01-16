@@ -9,6 +9,7 @@ import { defaultTheme } from './theme';
 import { getPopularMovies } from './api/index';
 import GlobalStyles from './globalStyles';
 import Header from '../src/components/header/index';
+import MoviePage from '../src/pages/movie/index'
 import Index from '../src/pages/index/index';
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
         <Header />
         <Route exact path="/">
           <Index />
+        </Route>
+        <Route exact path="/movie/:id">
+          <MoviePage />
         </Route>
       </Router>
     </ThemeProvider>

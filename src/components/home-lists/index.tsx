@@ -45,22 +45,24 @@ const MovieList: React.FC<MovieList> = ({ moviesData, title }) => {
             <Styled.Title>
               {title}
             </Styled.Title>
-            <Styled.LeftArrow onClick={handleLeftArrow}>
-              <ArrowBackIosIcon />
-            </Styled.LeftArrow>
-            <Styled.RightArrow onClick={handleRightArrow} >
-              <ArrowForwardIosIcon />
-            </Styled.RightArrow>
-            <Styled.Movies style={{
-              marginLeft: rowPosition,
-              width: moviesData && moviesData?.length * 150
-            }}>
-              {
-                moviesData && moviesData.map(result => {
-                  return <Card key={result.id} movieData={result} />
-                })
-              }
-            </Styled.Movies>
+            <Styled.Container>
+              <Styled.LeftArrow onClick={handleLeftArrow}>
+                <ArrowBackIosIcon />
+              </Styled.LeftArrow>
+              <Styled.RightArrow onClick={handleRightArrow} >
+                <ArrowForwardIosIcon />
+              </Styled.RightArrow>
+              <Styled.Movies style={{
+                marginLeft: rowPosition,
+                width: moviesData && moviesData?.length * 150
+              }}>
+                {
+                  moviesData && moviesData.map(result => {
+                    return <Card key={result.id} movieData={result} />
+                  })
+                }
+              </Styled.Movies>
+            </Styled.Container>
           </Styled.List>
   )
           

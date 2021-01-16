@@ -4,8 +4,6 @@ export const HomeLists = styled.div`
   overflow: hidden;
 `;
 
-
-
 export const Movies = styled.div`
   display: flex;
   gap: 10px;
@@ -97,3 +95,8 @@ export const RightArrow = styled.span`
     visibility: visible;
   }
   `;
+
+
+export const Container = styled.div`
+  position: relative;
+`;
