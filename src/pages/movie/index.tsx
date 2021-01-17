@@ -14,6 +14,8 @@ interface MovieData extends movieResults {
   watchProviders: {
     buy: [IProviders] | undefined,
     flatrate: [IProviders] | undefined,
+    rent: [IProviders] | undefined,
+    link: string
   },
 }
 
@@ -29,8 +31,6 @@ const MoviePage: React.FC = () => {
   const params = useParams<paramI>();
   const { id } = params;
 
-  // values from state
-
 
   const getMovieInfo = async () => {
     if(id){
@@ -40,23 +40,15 @@ const MoviePage: React.FC = () => {
       const data = movieData.data;
       const providersData = movieWatchProviders.data;
 
-      console.log('movieWatchProviders :>> ', movieWatchProviders);
-
       if(data && movieWatchProviders){
         setMovieData({
           ...data,
           watchProviders: providersData.results['BR']
         });
 
-       
-
         setLoading(false);
-      }
-
-      
+      } 
     }
-
-    console.log('movieData :>> ', movieData && movieData.watchProviders);
   }
 
   useEffect(() => {
@@ -66,11 +58,13 @@ const MoviePage: React.FC = () => {
     catch(err){
       throw new Error(err);
     }
-  }, [])
+  }, []);
 
   const buyProviders = movieData?.watchProviders?.buy;
-  const rentProviders = movieData?.watchProviders?.flatrate;
+  const flatrateProviders = movieData?.watchProviders?.flatrate;
+  const rentProviders = movieData?.watchProviders?.rent;
 
+  console.log('movieData?.watchProviders :>> ', movieData?.watchProviders);
   return (
     <Styled.MoviePage>
       {loading ? <LoadingSpinner/> :
@@ -86,15 +80,31 @@ const MoviePage: React.FC = () => {
               {movieData?.overview}
             </Styled.Overview>
             <Styled.Providers>
+            <div>
+              {
+                flatrateProviders && <h5>Stream: </h5>
+              }
+              <div>
+                {flatrateProviders && flatrateProviders.map((provider) => {
+                 return (
+                  <a target="_blank" href={movieData?.watchProviders?.link}>
+                    <img src={`https://image.tmdb.org/t/p/w300${provider?.logo_path}`}></img>
+                  </a>
+                  )
+                })}
+              </div>
+              </div>
               <div>
               {
                 buyProviders && <h5>Buy:</h5>
               }
               <div>
                 {buyProviders && buyProviders.map((provider) => {
-                  console.log('provider :>> ', provider);
-                  
-                  return <img src={`https://image.tmdb.org/t/p/w300${provider?.logo_path}`}></img>
+                  return (
+                  <a target="_blank" href={movieData?.watchProviders?.link}>
+                    <img src={`https://image.tmdb.org/t/p/w300${provider?.logo_path}`}></img>
+                  </a>
+                  )
                 })}
               </div>
               </div>
@@ -104,12 +114,15 @@ const MoviePage: React.FC = () => {
               }
               <div>
                 {rentProviders && rentProviders.map((provider) => {
-                  console.log('provider :>> ', provider);
-                  
-                  return <img src={`https://image.tmdb.org/t/p/w300${provider?.logo_path}`}></img>
+                  return (
+                    <a target="_blank" href={movieData?.watchProviders?.link}>
+                      <img src={`https://image.tmdb.org/t/p/w300${provider?.logo_path}`}></img>
+                    </a>
+                    )
                 })}
               </div>
               </div>
+              
             </Styled.Providers>
           </Styled.InfoTextContainer>
         </Styled.InfoContainer>

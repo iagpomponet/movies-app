@@ -85,11 +85,9 @@ export const Title = styled.div`
 export const Overview = styled.div``;
 
 export const Providers = styled.div`
-  height: 40px;
   display: flex;
-  margin-top: 20px;
   flex-direction: column;
-
+  padding-top: 20px;
   gap: 10px;
 
   h5 {
@@ -98,14 +96,21 @@ export const Providers = styled.div`
 
   & > div {
     display: flex;
-    gap: 10px;
+    gap: 0px;
     flex-direction: column;
+  }
+
+  a {
+    transition: 0.4s;
+    
+    &:hover{
+      opacity: 0.8;
+    }
   }
 
   div {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
   }
 
   img {
